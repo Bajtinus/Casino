@@ -13,6 +13,11 @@ class Gui:
             raise ValueError(f"Layout \"{name}\" not found")
         return self.content[name]["layout"]
 
+    def get_widget(self, name: str, layout_name: str) -> QWidget:
+        if name not in self.content[layout_name]["widgets"]:
+            raise ValueError(f"Widget \"{name}\" not found in \"{layout_name}\" layout")
+        return self.content[layout_name]["widgets"][name]
+
     def add_widget(self, widget_name: str, layout_name: str, widget: QWidget) -> None:
         self.content[layout_name]["widgets"][widget_name] = widget
         self.content[layout_name]["layout"].addWidget(widget)

@@ -1,7 +1,5 @@
 from PyQt6.QtWidgets import QWidget, QHBoxLayout
 
-from components.core.gui import Gui
-
 
 class Header(QWidget):
     def __init__(self):
@@ -14,4 +12,11 @@ class Header(QWidget):
     def add_widget(self, name: str, widget: QWidget) -> None:
         self.widgets[name] = widget
         self.layout.addWidget(widget)
+
+    def remove_widget(self, name: str) -> None:
+        widget = self.widgets.pop(name)
+        widget.deleteLater()
+
+    def get_widget(self, name: str) -> QWidget:
+        return self.widgets[name]
 

@@ -1,4 +1,4 @@
-
+from PyQt6.QtWidgets import QLayout, QWidget
 
 
 def int_to_str(value: int) -> str:
@@ -43,3 +43,9 @@ def str_to_int(value: str) -> int:
         return 104
     else:
         raise ValueError("Invalid value")
+
+
+def widget_from_layout(layout: QLayout) -> QWidget:
+    widget = QWidget()
+    widget.setLayout(layout)
+    return widget
